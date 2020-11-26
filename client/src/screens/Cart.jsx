@@ -1,4 +1,4 @@
-import React, {useEffect,useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { CardContent, Grid } from '@material-ui/core';
 import CartItemCard from '../components/CartItemCard';
@@ -13,46 +13,43 @@ const useStyles = makeStyles(() => ({
   head: {
     color: 'black',
     fontSize: '48px',
-    
-    position:'fixed',
-    top:'15vh',
-    left:'40vw'
 
+    position: 'fixed',
+    top: '15vh',
+    left: '40vw',
   },
   cart: {
     width: '100%',
     paddingBottom: '10px',
   },
   subtotal: {
-    position:'absolute',
-    bottom:'15vh',
-    right:'15vw',
+    position: 'absolute',
+    bottom: '15vh',
+    right: '15vw',
     paddingBottom: '10px',
   },
   root: {
     display: 'grid',
     height: '100vh',
   },
-  footer:{
-    direction:'row',
-    justify :'center',
-    alignContent:'flex-end'
-  }
+  footer: {
+    direction: 'row',
+    justify: 'center',
+    alignContent: 'flex-end',
+  },
 }));
 
 function Cart() {
-  const [CartItems,setItem]=useState([])
-useEffect(()=>{
-  axios
-  .get('http://localhost:5000/getProducts')
-  .then(res=>{
-  console.log("Inside use effect",res.data)
-  setItem(res.data.data)
-  })
-},[]) 
+  const [CartItems, setItem] = useState([]);
+  useEffect(() => {
+    axios.get('http://localhost:5000/getProducts').then((res) => {
+      console.log('Inside use effect', res.data);
+      setItem(res.data.data);
+    });
+  }, []);
   const classes = useStyles();
-  const { store } = useContext(CartContext);
-  const storeid = store.map(({ id }) => id);
+  const { cartstore } = useContext(CartContext);
+  const storeid = cartstore.map(({ id }) => id);
   return (
     <Grid container direction="column" className={classes.root}>
       <Grid item>
@@ -70,7 +67,7 @@ useEffect(()=>{
           alignItems="center"
         >
           <Grid item conatiner>
-            <h1 className={classes.head} >Shopping Cart</h1>
+            <h1 className={classes.head}>Shopping Cart</h1>
           </Grid>
           <Grid container spacing={4}>
             {CartItems.filter((item) => storeid.includes(item.id)).map(
@@ -87,14 +84,19 @@ useEffect(()=>{
               }
             )}
           </Grid>
-          <Grid item container justify='flex-end'  className={classes.subtotal}>
+          <Grid item container justify="flex-end" className={classes.subtotal}>
             <Card>
               <CardContent>
                 <li>SubTotal : Rs 1,09,998</li>
               </CardContent>
             </Card>
           </Grid>
-          <Grid item container justify='flex-end' style={{position:'absolute',bottom:'10vh',right:'15vw'}}  >
+          <Grid
+            item
+            container
+            justify="flex-end"
+            style={{ position: 'absolute', bottom: '10vh', right: '15vw' }}
+          >
             <Button variant="contained" color="primary" size="medium">
               Checkout
             </Button>
@@ -107,5 +109,5 @@ useEffect(()=>{
       </Grid>
     </Grid>
   );
-};
+}
 export default Cart;

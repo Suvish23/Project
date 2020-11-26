@@ -16,7 +16,9 @@ import {
   Link
 } from 'react-router-dom';
 
-import {CartContext} from '../CartContext'
+import {UserContext} from '../userContext'
+import { useHistory } from "react-router-dom";
+import axios from 'axios'
 
 function Copyright() {
   return (
@@ -64,14 +66,25 @@ const useStyles = makeStyles((theme) => ({
 
  export function Login() {
   const classes = useStyles();
+  const history=useHistory();
   const [email,setEmail] = useState('');
 const [password,setPassword] = useState(''); 
-const { dispatch } = useContext(CartContext);
+const { dispatch } = useContext(UserContext);
 const Submit = (e)=> {
-  dispatch({type:'Login',paylaod:{email:email,password:password}})
- e.preventDefault();
+  e.preventDefault();
+ axios
+ .post('http://localhost:5000/Login', {
+   email:email,
+   password:password
+ })
+ .then((response) => {
+  dispatch({type:'addUser', payload:{name:response.data.name}});
+  history.push('/')
+ })
+ .catch((error) => {
+   console.log(error.response);
+ });
  };
-
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
