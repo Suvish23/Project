@@ -1,4 +1,4 @@
-import React,{useContext,useState} from 'react';
+import React, { useContext, useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -9,16 +9,14 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {
-  Link
-} from 'react-router-dom';
-import { CartContext } from '../CartContext'
+import { Link } from 'react-router-dom';
+import { UserContext } from '../userContext';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      Copyright © 
-      <Link color="inherit" to='/'>
+      Copyright ©
+      <Link color="inherit" to="/">
         SAMSUNG
       </Link>{' '}
       {new Date().getFullYear()}
@@ -49,16 +47,24 @@ const useStyles = makeStyles((theme) => ({
 }));
 const SignUp = () => {
   const classes = useStyles();
-  const { dispatch } = useContext(CartContext);
-const [userName,setName] = useState('');
-const [email,setEmail] = useState('');
-const [password,setPassword] = useState('');
-const [phonenumber,setPhonenumber] = useState('');
+  const { dispatch } = useContext(UserContext);
+  const [userName, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [phonenumber, setPhonenumber] = useState('');
 
-const Submit = (e)=> {
-dispatch({type :'Register', payload : { name:userName,email:email,password:password,phonenumber:phonenumber}})
-e.preventDefault();
-};
+  const Submit = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: 'Register',
+      payload: {
+        name: userName,
+        email: email,
+        password: password,
+        phonenumber: phonenumber,
+      },
+    });
+  };
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -81,7 +87,7 @@ e.preventDefault();
                 fullWidth
                 id="userName"
                 label="Name"
-                type='text'
+                type="text"
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
@@ -96,7 +102,7 @@ e.preventDefault();
                 label="Email Address"
                 name="email"
                 value={email}
-                type='email'
+                type="email"
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
@@ -112,7 +118,6 @@ e.preventDefault();
                 label="Password"
                 type="password"
                 id="password"
-                type='password'
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
@@ -125,7 +130,7 @@ e.preventDefault();
                 fullWidth
                 label="Phone Number"
                 id="phonenumber"
-                name='phonenumber'
+                name="phonenumber"
                 value={phonenumber}
                 onChange={(e) => {
                   setPhonenumber(e.target.value);
@@ -138,16 +143,14 @@ e.preventDefault();
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit} 
+            className={classes.submit}
             onClick={Submit}
-          > 
+          >
             Sign Up
           </Button>
           <Grid container justify="center" spacing={4}>
             <Grid item>
-              <Link to='/login'>
-                Already have an account? Sign in
-              </Link>
+              <Link to="/login">Already have an account? Sign in</Link>
             </Grid>
           </Grid>
         </form>
@@ -157,5 +160,5 @@ e.preventDefault();
       </Box>
     </Container>
   );
-}
+};
 export default SignUp;
