@@ -6,10 +6,11 @@ app.use(express.json());
 
 
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
-  });
+});
   
 //Get all the Products...
 app.get("/getProducts",async(req,res)=> {
@@ -79,18 +80,17 @@ app.delete('/Remove/:id',async(req,res)=>{
 app.post('/Register',async(req, res) => {
     try {
         const results = await db.query("INSERT INTO users (name,email,password,phonenumber) values ($1,$2,$3,$4) returning *",[req.body.name,req.body.email,req.body.password,req.body.phonenumber]);
-        console.log(results.rows);
         res.status(200).json({ status: 'success',data :results.rows[0]});
     } 
     catch (error) {
-        res.status(500).json({status:"failed"});
+        res.status(404).json({status:"failed"});
     }
   });
+  
 
 //Login Route
   app.post('/Login', async(req, res) => {
       try{
-
           const {email,password}=req.body;
           const Email= await db.query("SELECT * from users where email=$1 ",[req.body.email] );
           const Password=Email.rows[0].password;
@@ -129,4 +129,8 @@ app.listen(port,()=>{
 
 
 
-  
+//   app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// });

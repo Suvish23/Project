@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext,useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,6 +15,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
   Link
 } from 'react-router-dom';
+
+import {CartContext} from '../CartContext'
 
 function Copyright() {
   return (
@@ -60,8 +62,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Login() {
+ export function Login() {
   const classes = useStyles();
+  const [email,setEmail] = useState('');
+const [password,setPassword] = useState(''); 
+const { dispatch } = useContext(CartContext);
+const Submit = (e)=> {
+  dispatch({type:'Login',paylaod:{email:email,password:password}})
+ e.preventDefault();
+ };
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -84,6 +93,10 @@ function Login() {
               id="email"
               label="Email Address"
               name="email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             />
             <TextField
               variant="outlined"
@@ -91,9 +104,13 @@ function Login() {
               required
               fullWidth
               name="password"
+              value={password}
               label="Password"
               type="password"
               id="password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -105,6 +122,7 @@ function Login() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={Submit}
             >
               Sign In
             </Button>

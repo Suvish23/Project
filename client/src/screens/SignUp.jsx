@@ -56,7 +56,7 @@ const [password,setPassword] = useState('');
 const [phonenumber,setPhonenumber] = useState('');
 
 const Submit = (e)=> {
- dispatch({type :'Register', payload : { name:userName,email:email,password:password,phonenumber:phonenumber}})
+dispatch({type :'Register', payload : { name:userName,email:email,password:password,phonenumber:phonenumber}})
 e.preventDefault();
 };
   return (
