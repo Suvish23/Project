@@ -78,12 +78,32 @@ app.delete('/Remove/:id',async(req,res)=>{
 
 //To Register a User
 app.post('/Register',async(req, res) => {
+// try{
+//     const {email}=req.body;
+//     const Email= db.query("SELECT * from users where email=$1 ",[email] );
+//      console.log(Email.rows[0].email)
+//      res.status(404).json({status:"entered"});
+// }
+// catch(error){
+//     res.status(404).json({status:"failed"});
+// }
     try {
-        const results = await db.query("INSERT INTO users (name,email,password,phonenumber) values ($1,$2,$3,$4) returning *",[req.body.name,req.body.email,req.body.password,req.body.phonenumber]);
-        res.status(200).json({ status: 'success',data :results.rows[0]});
+        const {email,name}=req.body;
+        const Email=await db.query("SELECT * from users where email=$1",[email]);
+        if(Email.rows[0].email === email){
+            res.status(400).json({status:"email is already registered"});
+        }
+        else{
+            const Name=await db.query("SELECT * from users where name=$1",[name]);
+            if(Name.rows[0].name === name)
+            res.status(400).json({status:"name is already registered"});
+        }
+
     } 
     catch (error) {
-        res.status(404).json({status:"failed"});
+        const results = await db.query("INSERT INTO users (name,email,password,phonenumber) values ($1,$2,$3,$4) returning *",[req.body.name,req.body.email,req.body.password,req.body.phonenumber]);
+        res.status(200).json({ status: 'success',data :results.rows[0]});
+      
     }
   });
   

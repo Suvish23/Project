@@ -70,7 +70,7 @@ const SignUp = () => {
        history.push('/')
     })
     .catch((error) => {
-      return error;
+      return error.response;
     });
   };
   return (
