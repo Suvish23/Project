@@ -38,7 +38,7 @@ const Header = () => {
   dispatch({type :'logout',payload:{name:userstore.name}})
     history.push('/')
   }
-
+  console.log(userstore.id)
   return (
     <AppBar position="static">
       <Toolbar>
@@ -47,6 +47,7 @@ const Header = () => {
         </Typography>
         <IconButton onClick={onclickgalleryhandler}><h5 style={{color:'whitesmoke'}}>Gallery</h5></IconButton>
   <h3>{userstore.user}</h3>
+ 
         <IconButton onClick={onclickloginhandler} ><PersonIcon/></IconButton>
         <IconButton onClick={onclickcarthandler}>
         <ShoppingCartIcon /></IconButton>

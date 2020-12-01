@@ -78,32 +78,16 @@ app.delete('/Remove/:id',async(req,res)=>{
 
 //To Register a User
 app.post('/Register',async(req, res) => {
-// try{
-//     const {email}=req.body;
-//     const Email= db.query("SELECT * from users where email=$1 ",[email] );
-//      console.log(Email.rows[0].email)
-//      res.status(404).json({status:"entered"});
-// }
-// catch(error){
-//     res.status(404).json({status:"failed"});
-// }
     try {
         const {email,name}=req.body;
         const Email=await db.query("SELECT * from users where email=$1",[email]);
         if(Email.rows[0].email === email){
             res.status(400).json({status:"email is already registered"});
         }
-        else{
-            const Name=await db.query("SELECT * from users where name=$1",[name]);
-            if(Name.rows[0].name === name)
-            res.status(400).json({status:"name is already registered"});
-        }
-
     } 
     catch (error) {
         const results = await db.query("INSERT INTO users (name,email,password,phonenumber) values ($1,$2,$3,$4) returning *",[req.body.name,req.body.email,req.body.password,req.body.phonenumber]);
         res.status(200).json({ status: 'success',data :results.rows[0]});
-      
     }
   });
   
@@ -116,7 +100,7 @@ app.post('/Register',async(req, res) => {
           const Password=Email.rows[0].password;
            if(Email.rows[0].email === email  && Password ===password)
            {
-               res.json({status:"successfully Logged in",name:Email.rows[0].name})
+               res.json({status:"successfully Logged in",name:Email.rows[0].name,id:Email.rows[0].user_id})
              }
             else(Password!==password)
             res.status(401).json({status:"Incorrect Password "})
@@ -125,17 +109,20 @@ catch(error){
     res.status(400).json({status:"Invalid input"})
 }});
 
-//To Remove 
-//   app.delete('/Logout/:id',async(req,res)=>{
-//     try {
-//         console.log(req.params.id);
-//         const results=await db.query("DELETE from users where id=$1 returning *",[req.params.id]);
-//         res.status(200).json({ status: 'success',data :results.rows});
-//     } 
-//     catch (error) {
-//         res.status(500).json({status:"failed"});
-//     }
-// })
+app.post('/placeorder',async(req,res)=>{
+    try{
+       const results= await db.query("INSERT INTO orders (user_id,p_id) values ($1,$2) returning * ",[req.body.user_id,req.body.id])
+     res.status(200).json({ status: 'success',data :results.rows[0]});
+    }
+    catch(error){
+        res.status(404).json({ status: 'failed'});
+    }
+})
+
+
+
+
+
 const port= process.env.PORT; 
 
 app.listen(port,()=>{

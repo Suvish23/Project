@@ -78,7 +78,7 @@ const Submit = (e)=> {
    password:password
  })
  .then((response) => {
-  dispatch({type:'addUser', payload:{name:response.data.name}});
+  dispatch({type:'addUser', payload:{name:response.data.name,id:response.data.id}});
   history.push('/')
  })
  .catch((error) => {
@@ -107,9 +107,9 @@ const Submit = (e)=> {
               label="Email Address"
               name="email"
               value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
+               onChange={(e) => {
+                 setEmail(e.target.value);
+               }}
             />
             <TextField
               variant="outlined"

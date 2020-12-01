@@ -1,8 +1,8 @@
 import React, { createContext, useReducer } from 'react';
 
-export const CartContext = createContext();
+ export const CartContext = createContext();
 
-export const CartContextProvider = (props) => {
+ export const CartContextProvider = (props) => {
   const initialState = [];
   const reducer = (state, action) => {
     switch (action.type) {
@@ -11,6 +11,7 @@ export const CartContextProvider = (props) => {
       case 'removeFromCart':
         const newState = state.filter((state) => state.id !== action.payload);
         return newState;
+       
       default:
         return state;
     }

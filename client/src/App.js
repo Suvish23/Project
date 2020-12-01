@@ -6,6 +6,7 @@ import Login from '../src/screens/Login';
 import SignUp from '../src/screens/SignUp';
 import Homepage from '../src/screens/HomePage';
 import ProductPstpage from '../src/screens/ProductPstPage';
+import Order from './screens/Order';
 import Thankyou from './screens/Thankyou';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/login" exact component={Login} />
         <Route path="/SignUp" exact component={SignUp} />
         <Route path="/Cart" exact component={Cart} />
+        <Route path="/Order" exact component={Order} />
         <Route path="/Thankyou" exact component={Thankyou} />
       </Switch>
     </Router>

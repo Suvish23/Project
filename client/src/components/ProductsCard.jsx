@@ -32,11 +32,11 @@ const useStyles = makeStyles({
 const ProductsCard = (props) => {
   const classes = useStyles();
   const { dispatch } = useContext(CartContext);
-  
   const { id, title, subtitle, description, imgSrc } = props;
   return (
     <Card className={classes.root}>
-      <CardHeader title={title} subheader={subtitle} />
+      <CardHeader title={title} />
+  <Typography style={{paddingLeft:'2vw',paddingBottom:'2vh'}}>{'Rs'} {subtitle}</Typography>
       <CardMedia style={{ height: '34vh' }} image={imgSrc} />
       <CardContent>
         <Typography
@@ -55,7 +55,8 @@ const ProductsCard = (props) => {
           type: 'addToCart',
           payload: {
             id: id,
-            
+            subtitle:subtitle,
+            title:title   
           }
         })}>
           <ShoppingCartIcon />

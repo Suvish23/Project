@@ -5,16 +5,17 @@ export const UserContext = createContext();
 export const UserContextProvider = (props) => {
   const initialState = {
     login :false,
-    user :''
+    user :'',
+    id:''
   };
   const reducer = (state, action) => {
     switch (action.type) {
       case 'addUser':
         console.log(action.payload.name);
-     const newState = {...state,login:true,user:action.payload.name}
+     const newState = {...state,login:true,user:action.payload.name,id:action.payload.id}
      return newState; 
      case 'logout':
-       const response={...state,login:false,user:action.payload.name}
+       const response={...state,login:false,user:''}
        return response;
       default:
         return state;

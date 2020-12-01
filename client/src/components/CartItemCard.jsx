@@ -11,9 +11,6 @@ const useStyles = makeStyles({
   root: {
     minWidth: '98%',
   },
-  qty:{
-    type:'number'
-  }
 });
 
 function CartItemCard(props) {
@@ -30,8 +27,7 @@ function CartItemCard(props) {
       <CardContent direction="row">
         <Grid container direction="row" justify="space-between">
           <li>{props.title}</li>
-          <li>qty</li>
-          <li >{props.subtitle}</li>
+  <li >{'Rs'} {props.subtitle}</li>
   
         </Grid>
       </CardContent>

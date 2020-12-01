@@ -6,7 +6,7 @@ import '../App.css';
 const useStyles = makeStyles(() => ({
   image: {
     backgroundImage: `url(${samsung})`,
-    minHeight: '90vh',
+    minHeight: '92vh',
     minWidth: '98.9vw',
     backgroundPosition: 'center',
     backgroundSize: '100vw',
