@@ -85,19 +85,14 @@ return (
 {CartItems.filter((item) => storeid.includes(item.id)).map(
               (item) => {
                 return (
-                  <Grid container item direction='row' xs={12} sm={12} key={item.id}    >
-                    <Card style={{padding:"15px 15px 45px 15px", borderBottom :"5px solid grey",width:'100%',margin:"10px" }}>
-                    
-                  <div style={{position:'absolute',left:'6vw'}}>
-                  <h3>
-                  {item.title}
-                    </h3>
-                  </div>
-                  <div style={{position:'absolute',right:'6vw'}}>
-                  <h3>
+                  <Grid xs={12} sm={12} key={item.id}   >
+                    <Card container style={{padding:"15px 15px 45px 15px", borderBottom :"5px solid grey",width:'100%',margin:"10px"}}>
+                    <Grid container item justify='space-between'> 
+                   <h3 >
+                   {item.title}
+                     </h3>
                   {"Rs "} {item.subtitle}
-                    </h3>
-                  </div>
+                  </Grid>
                     </Card>
                   </Grid>
                 );
@@ -125,10 +120,6 @@ return (
 </Grid>
   );
   }
-
-
-
-
 
 
 
