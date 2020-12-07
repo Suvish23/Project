@@ -8,6 +8,7 @@ import Homepage from '../src/screens/HomePage';
 import ProductPstpage from '../src/screens/ProductPstPage';
 import Order from './screens/Order';
 import Thankyou from './screens/Thankyou';
+import OrderHistory from './screens/OrderHistory';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/Cart" exact component={Cart} />
         <Route path="/Order" exact component={Order} />
         <Route path="/Thankyou" exact component={Thankyou} />
+        <Route path="/OrderHistory" exact component={OrderHistory} />
       </Switch>
     </Router>
       

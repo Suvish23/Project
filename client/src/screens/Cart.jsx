@@ -56,7 +56,6 @@ function Cart() {
   const storeid = cartstore.map(({ id }) => id);
   console.log(storeid)
   const totalPrice = cartstore.reduce((acc , curr) => acc + curr.subtitle , 0);
-
 const onclickCheckouthandler =() =>{
   history.push('/Order')
 }

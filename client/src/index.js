@@ -7,8 +7,8 @@ import { UserContextProvider } from './userContext';
 ReactDOM.render(
   <React.StrictMode>
     <CartContextProvider>
-      <UserContextProvider>
-        <App />
+      <UserContextProvider>     
+        <App />       
       </UserContextProvider>
     </CartContextProvider>
   </React.StrictMode>,

@@ -33,20 +33,24 @@ export default function Order() {
     const history = useHistory()
     const { cartstore }= useContext(CartContext);
     const { userstore }= useContext(UserContext);
+    
+    const storetitle = cartstore.map(({ title }) => title);
     const storeid = cartstore.map(({ id }) => id);
     console.log(cartstore);
     console.log(userstore.id);
+    
     const onclickbackhandler = (e) =>{
       e.preventDefault();
         history.push('/Cart');
     }
-  const Placeorder = (e) =>{
+  const Placeorder = () =>{
     axios.post("http://localhost:5000/placeorder",{
-      user_id:userstore.id,
-      id:storeid
+      userid:userstore.id,
+      productid:storeid,
+      producttitle:storetitle,
     })
-    .then(res=>{
-      console.log(res.data)
+    .then(response=>{
+     console.log("stored successfully",response.data.data)
   })
   .catch(error=>{
     console.log('failed')

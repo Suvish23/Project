@@ -79,7 +79,7 @@ app.delete('/Remove/:id',async(req,res)=>{
 //To Register a User
 app.post('/Register',async(req, res) => {
     try {
-        const {email,name}=req.body;
+        const {email}=req.body;
         const Email=await db.query("SELECT * from users where email=$1",[email]);
         if(Email.rows[0].email === email){
             res.status(400).json({status:"email is already registered"});
@@ -100,7 +100,7 @@ app.post('/Register',async(req, res) => {
           const Password=Email.rows[0].password;
            if(Email.rows[0].email === email  && Password ===password)
            {
-               res.json({status:"successfully Logged in",name:Email.rows[0].name,id:Email.rows[0].user_id})
+               res.json({status:"successfully Logged in",name:Email.rows[0].name,id:Email.rows[0].userid})
              }
             else(Password!==password)
             res.status(401).json({status:"Incorrect Password "})
@@ -111,13 +111,25 @@ catch(error){
 
 app.post('/placeorder',async(req,res)=>{
     try{
-       const results= await db.query("INSERT INTO orders (user_id,p_id) values ($1,$2) returning * ",[req.body.user_id,req.body.id])
-     res.status(200).json({ status: 'success',data :results.rows[0]});
+        const results=await db.query("INSERT INTO orders (userid,productid,producttitle) values ($1,$2,$3) returning *",[req.body.userid,req.body.productid,req.body.producttitle]);
+     res.status(200).json({ status: 'success',data:results.rows});
     }
     catch(error){
         res.status(404).json({ status: 'failed'});
     }
 })
+
+
+app.post("/orders",async(req,res)=> {
+    try {
+        const results = await db.query("Select * from orders where userid=$1",[req.body.userid]);
+        console.log(results.rows)
+          res.status(200).json({status:"success",data:results.rows}
+      )}
+     catch (error) {
+        res.status(500).json({status:"failed"})
+    }});
+
 
 
 
