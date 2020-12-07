@@ -102,8 +102,8 @@ app.post('/Register',async(req, res) => {
            {
                res.json({status:"successfully Logged in",name:Email.rows[0].name,id:Email.rows[0].userid})
              }
-            else(Password!==password)
-            res.status(401).json({status:"Incorrect Password "})
+            else if(Password!== password)
+            res.status(401).json({data:"Incorrect Password "})
             }    
 catch(error){
     res.status(400).json({status:"Invalid input"})

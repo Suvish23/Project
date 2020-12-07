@@ -41,6 +41,7 @@ const Header = () => {
   }
   const onclicklogouthandler = ()=>{
   dispatch({type :'logout',payload:{name:userstore.name}})
+  window.alert("Logged out successfully")
     history.push('/')
   }
   const Onclicknamehandler = (e) =>{

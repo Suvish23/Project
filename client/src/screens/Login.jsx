@@ -82,7 +82,7 @@ const Submit = (e)=> {
   history.push('/')
  })
  .catch((error) => {
-   console.log(error.response);
+   window.alert("Incorrect Details");
  });
  };
   return (

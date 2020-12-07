@@ -117,7 +117,6 @@ return (
       </CardActions>
     </Card>
     </Grid>
-
 <Grid item container className={classes.footer}>
 <Footer />
 </Grid>
