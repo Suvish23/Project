@@ -59,7 +59,6 @@ const Header = () => {
         </Typography>
         <IconButton onClick={onclickgalleryhandler}><h5 style={{color:'whitesmoke'}}>Gallery</h5></IconButton>
   <Button onClick={Onclicknamehandler} disabled={!userstore.user}>{userstore.user}</Button>
- 
         <IconButton onClick={onclickloginhandler} ><PersonIcon/></IconButton>
         <IconButton onClick={onclickcarthandler}>
         <ShoppingCartIcon /></IconButton>

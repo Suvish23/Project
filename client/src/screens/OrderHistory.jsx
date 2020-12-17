@@ -1,7 +1,6 @@
 import React,{useState,useEffect,useContext} from 'react';
 import { UserContext } from '../userContext';
 import Card from '@material-ui/core/Card';
-
 import { CardContent, Grid, Typography } from '@material-ui/core';
 import axios from 'axios';
 
@@ -44,17 +43,6 @@ export default function OrderHistory() {
       </div>
   ); 
 }
-
-
-
-//  <div>
-  //    {orders.map(data => {
-  //      return(
-  //  <h1>
-  //    {data.orderid}
-  //  </h1>
-  //    )})}
-  //  </div> 
 
 
 

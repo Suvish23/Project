@@ -11,7 +11,6 @@ import React, { createContext, useReducer } from 'react';
       case 'removeFromCart':
         const newState = state.filter((state) => state.id !== action.payload);
         return newState;
-       
       default:
         return state;
     }
