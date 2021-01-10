@@ -66,7 +66,7 @@ const SignUp = () => {
     phonenumber,
     })
     .then((response) => {
-       dispatch({type:'addUser', payload:{name:response.data.data.name,id:response.data.userid}});
+       dispatch({type:'addUser', payload:{name:response.data.data.name,id:response.data.data.userid}});
        history.push('/')
     })
     .catch((error) => {

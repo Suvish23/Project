@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Grid } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
   text: {
@@ -14,6 +15,14 @@ const useStyles = makeStyles(() => ({
 }));
 const Footer = () => {
   const classes = useStyles();
+  const history =useHistory();
+
+  const onclickcontactushandler = () => {
+    history.push('/Contact')
+  }
+  const onclickemployeehandler = () => {
+    history.push('/employees')
+  }
   return (
     <Grid
       container
@@ -22,10 +31,13 @@ const Footer = () => {
       justify="space-evenly"
  
     >
-      <li>Products and Services</li>
-      <li>Shop Smart</li>
-      <li>Support</li>
-      <li>Company</li>
+      
+     
+      <Button style={{color:'white'}} onClick={onclickemployeehandler}>Employee</Button>
+      <Button style={{color:'white'}} onClick={onclickcontactushandler}>Contact Us</Button>
+      <Button style={{color:'white'}} >Company</Button>
+        
+      
     </Grid>
   );
 };

@@ -78,6 +78,7 @@ const Submit = (e)=> {
    password:password
  })
  .then((response) => {
+   console.log(response.id)
   dispatch({type:'addUser', payload:{name:response.data.name,id:response.data.id}});
   history.push('/')
  })
@@ -140,11 +141,7 @@ const Submit = (e)=> {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
+              
               <Grid item>
                <Link to='/SignUp'>Don't have an account? Sign Up</Link>
               </Grid>

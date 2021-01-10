@@ -9,6 +9,9 @@ import ProductPstpage from '../src/screens/ProductPstPage';
 import Order from './screens/Order';
 import Thankyou from './screens/Thankyou';
 import OrderHistory from './screens/OrderHistory';
+import Contact from './screens/Contact';
+import Employees from './screens/employees';
+import Addproducts from './screens/addProducts';
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
         <Route path="/Order" exact component={Order} />
         <Route path="/Thankyou" exact component={Thankyou} />
         <Route path="/OrderHistory" exact component={OrderHistory} />
+        <Route path="/Contact" exact component={Contact} />
+        <Route path="/employees" exact component={Employees} />
+        <Route path="/addproducts" exact component={Addproducts} />
       </Switch>
     </Router>
       

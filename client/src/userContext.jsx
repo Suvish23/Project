@@ -12,6 +12,8 @@ export const UserContextProvider = (props) => {
     switch (action.type) {
       case 'addUser':
         console.log(action.payload.name);
+        console.log(action.payload.id);
+
      const newState = {...state,login:true,user:action.payload.name,id:action.payload.id}
      return newState; 
      case 'logout':

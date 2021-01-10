@@ -7,6 +7,7 @@ import axios from 'axios';
 export default function OrderHistory() {
   const { userstore } = useContext(UserContext);
   const [orders,setorders]=useState([])
+  console.log(userstore.id)
   useEffect(()=>{
     axios
     .post('http://localhost:5000/orders',{
@@ -16,11 +17,13 @@ export default function OrderHistory() {
     setorders(res.data.data)
     }) 
   },[]);
+  console.log(orders)
     return (  
       <div>
         <div>
                 <h1 style={{textAlign:"center"}}>Order History</h1>
               </div>
+              
         {
         orders.map((order) => {
           return (

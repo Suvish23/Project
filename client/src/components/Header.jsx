@@ -21,9 +21,7 @@ const Header = () => {
   const { userstore } = useContext(UserContext);
   console.log(userstore)
   const { dispatch } = useContext(UserContext);
- 
-  // console.log(orderstore.user)
-  // console.log(orderstore.product)
+
   const classes = useStyles();
   const history = useHistory();
 
@@ -46,9 +44,14 @@ const Header = () => {
   }
   const Onclicknamehandler = (e) =>{
     e.preventDefault();
+    if(userstore.user !=="admin"){
     history.push('/OrderHistory')
+    }
   }
-
+const OnclickAddhandler = (e) =>{
+  e.preventDefault();
+history.push("/addproducts")
+}
  
   console.log(userstore.id)
   return (
@@ -57,8 +60,12 @@ const Header = () => {
         <Typography className={classes.typographyStyles}>
           <IconButton onClick={onclick}><h5 style={{ paddingLeft: '10px',color:'white', }}>Samsung</h5></IconButton>
         </Typography>
+  {
+    (userstore.user==="admin") &&  <Button onClick={OnclickAddhandler}>Add products</Button>
+  }
         <IconButton onClick={onclickgalleryhandler}><h5 style={{color:'whitesmoke'}}>Gallery</h5></IconButton>
-  <Button onClick={Onclicknamehandler} disabled={!userstore.user}>{userstore.user}</Button>
+  <Button onClick={Onclicknamehandler} disabled={!userstore.user }>{userstore.user}</Button>
+ 
         <IconButton onClick={onclickloginhandler} ><PersonIcon/></IconButton>
         <IconButton onClick={onclickcarthandler}>
         <ShoppingCartIcon /></IconButton>

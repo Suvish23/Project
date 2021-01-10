@@ -37,9 +37,9 @@ app.get("/getproduct/:id",async(req,res)=>{
 
 //Create a Product.......
 
-app.post("/Create",async(req,res)=>{
+app.post("/createProduct",async(req,res)=>{
     try {
-        const results=await db.query("INSERT INTO products (id,title,subtitle,imgsrc,description) values ($1,$2,$3,$4,$5) returning *",[req.body.id,req.body.title,req.body.subtitle,req.body.imgsrc,req.body.description]);
+        const results=await db.query("INSERT INTO products (title,subtitle,imgsrc,description) values ($1,$2,$3,$4) returning *",[req.body.title,req.body.subtitle,req.body.imgsrc,req.body.description]);
         console.log(results);
         res.status(200).json({ status: 'success',data :results.rows[0]});
     } 
@@ -129,6 +129,26 @@ app.post("/orders",async(req,res)=> {
      catch (error) {
         res.status(500).json({status:"failed"})
     }});
+
+
+    app.post('/feedback',async(req, res) => {
+        try {
+            const results = await db.query("INSERT INTO feedback (name,email,message) values ($1,$2,$3) returning *",[req.body.name,req.body.email,req.body.message]);
+            res.status(200).json({ status: 'success',data :results.rows[0]});
+        }
+        catch (error) {
+            res.status(400).json({status:"failed",data :""})
+        }
+      });  
+    app.get('/employees',async(req, res) => {
+        try {
+            const results = await db.query("Select * from employee");
+            res.status(200).json({ status: 'success',data :results.rows});
+        }
+        catch (error) {
+            res.status(400).json({status:"failed",data :""})
+        }
+      });  
 
 
 
