@@ -12,7 +12,8 @@ import OrderHistory from './screens/OrderHistory';
 import Contact from './screens/Contact';
 import Employees from './screens/employees';
 import Addproducts from './screens/addProducts';
-
+import UpdatePrice from './screens/updatePrice';
+import UpdateEmployee from './screens/updateEmployee'
 function App() {
   return (
     <Router>
@@ -28,6 +29,8 @@ function App() {
         <Route path="/Contact" exact component={Contact} />
         <Route path="/employees" exact component={Employees} />
         <Route path="/addproducts" exact component={Addproducts} />
+        <Route path="/updateprice" exact component={UpdatePrice} />
+        <Route path="/updateemployee" exact component={UpdateEmployee} />
       </Switch>
     </Router>
       

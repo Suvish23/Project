@@ -9,6 +9,7 @@ app.use(express.json());
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header( "Access-Control-Allow-Methods","GET,PUT,POST,DELETE,PATCH,OPTIONS")
     next();
 });
   
@@ -65,7 +66,7 @@ app.put('/update/:id',async(req,res)=>{
 
 //Delete a Product....
 
-app.delete('/Remove/:id',async(req,res)=>{
+app.delete('/remove/:id',async(req,res)=>{
     try {
         const results=await db.query("DELETE from products where id=$1 ",[req.params.id]);
         res.status(200).json({ status: 'success',data :results.rows});
@@ -109,6 +110,7 @@ catch(error){
     res.status(400).json({status:"Invalid input"})
 }});
 
+//place a order
 app.post('/placeorder',async(req,res)=>{
     try{
         const results=await db.query("INSERT INTO orders (userid,productid,producttitle) values ($1,$2,$3) returning *",[req.body.userid,req.body.productid,req.body.producttitle]);
@@ -118,7 +120,7 @@ app.post('/placeorder',async(req,res)=>{
         res.status(404).json({ status: 'failed'});
     }
 })
-
+//orders of users
 
 app.post("/orders",async(req,res)=> {
     try {
@@ -129,7 +131,8 @@ app.post("/orders",async(req,res)=> {
      catch (error) {
         res.status(500).json({status:"failed"})
     }});
-
+   
+    //add feedback
 
     app.post('/feedback',async(req, res) => {
         try {
@@ -140,6 +143,8 @@ app.post("/orders",async(req,res)=> {
             res.status(400).json({status:"failed",data :""})
         }
       });  
+
+      //get all employees
     app.get('/employees',async(req, res) => {
         try {
             const results = await db.query("Select * from employee");
@@ -148,7 +153,29 @@ app.post("/orders",async(req,res)=> {
         catch (error) {
             res.status(400).json({status:"failed",data :""})
         }
-      });  
+      }); 
+
+      //add employee
+      app.post("/addemployee",async(req,res)=>{
+        try {
+            const results=await db.query("INSERT INTO employee (emp_name,emp_email,emp_phonenumber,role) values ($1,$2,$3,$4) returning *",[req.body.name,req.body.email,req.body.phonenumber,req.body.role]);
+            console.log(results);
+            res.status(200).json({ status: 'success',data :results.rows[0]});
+        } 
+        catch (error) {
+            res.status(500).json({status:"failed"});
+    
+        }
+    }); 
+    app.post('/remove',async(req,res)=>{
+        try {
+            const results=await db.query("DELETE from employee where emp_name=$1 ",[req.body.name]);
+            res.status(200).json({ status: 'success',data :results.rows});
+        } 
+        catch (error) {
+            res.status(500).json({status:"failed"});
+        }
+    })
 
 
 

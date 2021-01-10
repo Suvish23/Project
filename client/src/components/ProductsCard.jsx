@@ -9,6 +9,12 @@ import Typography from '@material-ui/core/Typography';
 import { CardMedia } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { CartContext } from '../CartContext';
+import { UserContext } from '../userContext';
+
+
+import { useHistory } from 'react-router-dom';
+import { UpdateContext } from '../UpdatePriceContext';
+import axios from 'axios';
 
 
 const useStyles = makeStyles({
@@ -31,8 +37,26 @@ const useStyles = makeStyles({
 
 const ProductsCard = (props) => {
   const classes = useStyles();
+  const history = useHistory();
   const { dispatch } = useContext(CartContext);
+  const { dispatch2 } = useContext(UpdateContext);
+  const {userstore} = useContext(UserContext);
   const { id, title, subtitle, description, imgSrc } = props;
+
+  const Onclickupdatehandler = (id) =>{ 
+    
+    dispatch2({type:'addtostore', payload:{id}});
+    history.push('/updateprice')
+   
+  }
+  const Onclickdeletehandler = (id) =>{ 
+    
+    
+    axios.delete(`http://localhost:5000/remove/${id}`)
+    history.push('/')
+    
+   
+  }
   return (
     <Card className={classes.root}>
       <CardHeader title={title} />
@@ -62,6 +86,12 @@ const ProductsCard = (props) => {
           <ShoppingCartIcon />
           Add to Cart 
         </Button>
+        {
+    (userstore.user==="admin") &&  <Button onClick={()=>Onclickupdatehandler(id)}>update</Button>
+  }
+        {
+    (userstore.user==="admin") &&  <Button onClick={()=>Onclickdeletehandler(id)}>delete</Button>
+  }
       </CardActions>
     </Card>
   );

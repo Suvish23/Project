@@ -1,6 +1,5 @@
-import { Grid } from '@material-ui/core';
-import React , {useEffect} from 'react'
-
+import { Grid  } from '@material-ui/core';
+import React , {useContext, useEffect  } from 'react'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
@@ -15,6 +14,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {useHistory} from "react-router-dom"
 import axios from 'axios';
+import { UserContext } from '../userContext';
 
 
 const StyledTableCell = withStyles((theme) => ({
@@ -46,7 +46,9 @@ const useStyles = makeStyles({
 
 function Employees() {
   const classes = useStyles();
+  const {userstore} =useContext(UserContext);
   const [data,setData] = React.useState([]);
+   
 const history =useHistory();
   const onclickbackhandler = ()=>{
     history.push('/')
@@ -61,11 +63,11 @@ const history =useHistory();
       console.log(err)
     })  
  },[])
+ const onclickaddeletehandler = () =>{
+   history.push('/updateemployee')
+ }
+
   
-
- 
- 
-
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -94,13 +96,19 @@ const history =useHistory();
                {row.emp_email}</StyledTableCell>
               <StyledTableCell align="left">
               {row.emp_phonenumber}</StyledTableCell>
-              <StyledTableCell >{row.Role}</StyledTableCell>
+              <StyledTableCell >{row.role}</StyledTableCell>
  </StyledTableRow>
             ))}   
             </TableBody>
             </Table>
         </TableContainer>
       </Grid>
+     
+
+      {
+    (userstore.user==="admin") &&  <Button onClick={onclickaddeletehandler}>Add/Delete Employee</Button>
+  }
+   
     </Grid>
   )
 }
