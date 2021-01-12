@@ -8,6 +8,9 @@ import { IconButton } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
 import { UserContext } from '../userContext';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import logo from '../images/logo.jpg';
+
+
 
 
 
@@ -15,6 +18,23 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 const useStyles = makeStyles(() => ({
   typographyStyles: {
     flex: 1,
+  },
+  button:{
+    marginLeft:"2vw",
+    color:"#ffffff",
+    '&:hover':{
+      backgroundColor:"#ffffff",
+      color:"#000000",
+      borderRadius:"8px"
+    }
+  },
+  button2:{
+    color:"#ffffff",
+    padding:"8px",
+    '&:hover':{
+      backgroundColor:"#ffffff",
+      color:"#000000",
+    }
   },
 }));
 const Header = () => {
@@ -55,21 +75,21 @@ history.push("/addproducts")
  
   console.log(userstore.id)
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={{backgroundColor:"black"}}>
       <Toolbar>
         <Typography className={classes.typographyStyles}>
-          <IconButton onClick={onclick}><h5 style={{ paddingLeft: '10px',color:'white', }}>Samsung</h5></IconButton>
+          <Button onClick={onclick} style={{ width:"10vw",height:"5vh",color:'white',backgroundImage: `url(${logo})`,backgroundPosition: 'center center'}}></Button>
         </Typography>
   {
-    (userstore.user==="admin") &&  <Button onClick={OnclickAddhandler}>Add products</Button>
+    (userstore.user==="admin") &&  <Button onClick={OnclickAddhandler} className={classes.button2} >Add products</Button>
   }
  
-        <IconButton onClick={onclickgalleryhandler}><h5 style={{color:'whitesmoke'}}>Gallery</h5></IconButton>
-  <Button onClick={Onclicknamehandler} disabled={!userstore.user }>{userstore.user}</Button>
-        <IconButton onClick={onclickloginhandler} ><PersonIcon/></IconButton>
-        <IconButton onClick={onclickcarthandler}>
+        <Button onClick={onclickgalleryhandler} color="inherit" className={classes.button}>Gallery</Button>
+  <Button onClick={Onclicknamehandler} className={classes.button2} disabled={!userstore.user }>{userstore.user}</Button>
+        <IconButton onClick={onclickloginhandler} className={classes.button2}  ><PersonIcon/></IconButton>
+        <IconButton onClick={onclickcarthandler} className={classes.button2}>
         <ShoppingCartIcon /></IconButton>
-        <IconButton onClick={onclicklogouthandler} ><ExitToAppIcon/>
+        <IconButton onClick={onclicklogouthandler} className={classes.button2} ><ExitToAppIcon/>
         </IconButton>
       </Toolbar>
     </AppBar>

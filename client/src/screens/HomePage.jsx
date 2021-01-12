@@ -15,7 +15,7 @@ const Homepage = () => {
       <Grid item xs={12}>
         <HomePageContent />
       </Grid>
-      <Grid item xs={12}>
+      <Grid container item xs={12} direction="row" justify="center" alignContent="flex-end"  style={{bottom:"0px",position:"absolute"}}>
         <Footer />
       </Grid>
     </div>

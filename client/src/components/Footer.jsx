@@ -35,7 +35,7 @@ const Footer = () => {
      
       <Button style={{color:'white'}} onClick={onclickemployeehandler}>Employee</Button>
       <Button style={{color:'white'}} onClick={onclickcontactushandler}>Contact Us</Button>
-      <Button style={{color:'white'}} >Company</Button>
+      <Button style={{color:'white'}} >About us</Button>
         
       
     </Grid>

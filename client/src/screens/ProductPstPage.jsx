@@ -11,9 +11,9 @@ const ProductPstPage = () => {
       <Grid item>
         <Header />
       </Grid>
-      <Grid container xs={12} sm={12}>
+      {/* <Grid container xs={12} sm={12}>
         <Gallery />
-      </Grid>
+      </Grid> */}
       <Grid className="sky" item container>
         <Grid item xs={false} sm={1} />
         

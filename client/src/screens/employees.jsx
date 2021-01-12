@@ -15,6 +15,7 @@ import Paper from '@material-ui/core/Paper';
 import {useHistory} from "react-router-dom"
 import axios from 'axios';
 import { UserContext } from '../userContext';
+import Footer from '../components/Footer';
 
 
 const StyledTableCell = withStyles((theme) => ({
@@ -71,7 +72,7 @@ const history =useHistory();
   return (
     <Grid container>
       <Grid item xs={12}>
-            <AppBar position="static">
+            <AppBar position="static" style={{backgroundColor:"black"}}>
         <Toolbar>
         <Button  style={{color:'white'}} onClick={onclickbackhandler} ><ArrowBackOutlinedIcon  style={{color:'white', fontSize:'28px'}}/><h5>Back to Home</h5></Button>
         </Toolbar>
@@ -108,7 +109,9 @@ const history =useHistory();
       {
     (userstore.user==="admin") &&  <Button onClick={onclickaddeletehandler}>Add/Delete Employee</Button>
   }
-   
+   <Grid container xs={12} direction="row" justify="center" alignContent="flex-end" style={{bottom:"0px",position:"absolute"}}>
+     <Footer/>
+   </Grid>
     </Grid>
   )
 }

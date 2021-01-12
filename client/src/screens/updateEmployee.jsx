@@ -44,7 +44,7 @@ const onclickbackhandler = ()=>{
     return (
         <Grid>
              <Grid item xs={12}>
-            <AppBar position="static">
+            <AppBar position="static" style={{color:"black"}}>
         <Toolbar>
         <Button  style={{color:'white'}} onClick={onclickbackhandler} ><ArrowBackOutlinedIcon  style={{color:'white', fontSize:'28px'}}/></Button>
         </Toolbar>

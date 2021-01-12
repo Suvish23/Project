@@ -21,6 +21,7 @@ const useStyles = makeStyles({
   root: {
     maxHeight: '600px',
     minWidth: 20,
+    borderRadius:"18px"
   },
   bullet: {
     display: 'inline-block',
@@ -75,6 +76,7 @@ const ProductsCard = (props) => {
         <Typography variant="body2" component="p"></Typography>
       </CardContent>
       <CardActions>
+        { (userstore.user !=="admin") &&
         <Button size="small" onClick={() => dispatch({
           type: 'addToCart',
           payload: {
@@ -85,7 +87,7 @@ const ProductsCard = (props) => {
         })}>
           <ShoppingCartIcon />
           Add to Cart 
-        </Button>
+        </Button>}
         {
     (userstore.user==="admin") &&  <Button onClick={()=>Onclickupdatehandler(id)}>update</Button>
   }
