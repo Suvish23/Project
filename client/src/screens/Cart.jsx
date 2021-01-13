@@ -96,7 +96,7 @@ const onclickCheckouthandler =() =>{
           <Grid item container justify="flex-end" className={classes.subtotal}>
             <Card>
               <CardContent>
-            <li>SubTotal = {'Rs'} {totalPrice}</li>
+            <li>SubTotal = {'₹'} {totalPrice}</li>
               </CardContent>
             </Card>
           </Grid>

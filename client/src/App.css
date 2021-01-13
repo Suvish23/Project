@@ -8,7 +8,7 @@
 }
 .sky {
   background-image: url('./images/galaxy.jpg');
-  background-position: center;
+  background-position: center center;
 }
 .text {
   color: antiquewhite;

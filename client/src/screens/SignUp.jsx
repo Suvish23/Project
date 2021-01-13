@@ -13,26 +13,31 @@ import { Link } from 'react-router-dom';
 import { UserContext } from '../userContext';
 import axios from 'axios'
 import { useHistory } from "react-router-dom"
+import { Card } from '@material-ui/core';
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      Copyright ©
-      <Link color="inherit" to="/">
-        SAMSUNG
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
+    <Typography variant="body2"  align="center">
+     
+      <p style={{color:"black"}}> Copyright © <span style={{color:"black",fontWeight:"700",fontFamily:"Oswald"}}>SAMSUNG</span>   {new Date().getFullYear()}  {'.'}</p>
+        
+    
+ 
     </Typography>
   );
 }
 
 const useStyles = makeStyles((theme) => ({
+  root:{
+backgroundColor:"black",
+height:"100vh"
+  },
   paper: {
     marginTop: theme.spacing(4),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    padding:"10px 10px",
   },
   avatar: {
     margin: theme.spacing(1),
@@ -45,9 +50,16 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
     marginBottom: theme.spacing(3),
+    backgroundColor:"black",
+    color:"white",
+    '&:hover':{
+      backgroundColor:"black",
+      color:"#ffffff",
+    }
   },
 }));
 const SignUp = () => {
+
   const classes = useStyles();
   const history=useHistory();
   const { dispatch } = useContext(UserContext);
@@ -74,15 +86,15 @@ const SignUp = () => {
     });
   };
   return (
-    <Container component="main" maxWidth="xs">
+    <Grid container  className={classes.root}>
+    <Container component="main" maxWidth="xs"  >
       <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography variant="h4" color="textprimary">
-          Sign up
-        </Typography>
+      <Card style={{padding:"2vh",borderRadius:"10px",padding:"10px 10px",marginTop:"30px"}}>
+      <Grid className={classes.paper}>
+       
+        <Typography component="h1" variant="h5" style={{fontSize:"5rem",color:"#000000",fontFamily:"sans-serif",padding:"0"}}>
+            <p style={{borderRadius:'10px',marginTop:"0"}}>Sign <span style={{color:"#ffffff",backgroundColor:'#000000'}}>in</span></p>
+          </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -147,10 +159,9 @@ const SignUp = () => {
             </Grid>
           </Grid>
           <Button
-            type="submit"
+            type ="submit"
             fullWidth
             variant="contained"
-            color="primary"
             className={classes.submit}
             onClick={Submit}
           >
@@ -158,15 +169,19 @@ const SignUp = () => {
           </Button>
           <Grid container justify="center" spacing={4}>
             <Grid item>
-              <Link to="/login">Already have an account? Sign in</Link>
+              <Link to ="/login" style={{textDecoration:"none",fontSize:"20px",fontFamily:" Big Shoulders Stencil Text"}}>Already have an account? <span style={{backgroundColor:"black",color:"white",borderRadius:"5px",fontSize:"20px"}}>Sign in </span> </Link>
             </Grid>
           </Grid>
         </form>
-      </div>
+        
+      </Grid>
       <Box>
+      
         <Copyright />
       </Box>
+      </Card>
     </Container>
+    </Grid>
   );
 };
 export default SignUp;

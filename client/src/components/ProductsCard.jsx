@@ -61,7 +61,7 @@ const ProductsCard = (props) => {
   return (
     <Card className={classes.root}>
       <CardHeader title={title} />
-  <Typography style={{paddingLeft:'2vw',paddingBottom:'2vh'}}>{'Rs'} {subtitle}</Typography>
+  <Typography style={{paddingLeft:'2vw',paddingBottom:'2vh'}}>{'₹'} {subtitle}</Typography>
       <CardMedia style={{ height: '34vh' }} image={imgSrc} />
       <CardContent>
         <Typography

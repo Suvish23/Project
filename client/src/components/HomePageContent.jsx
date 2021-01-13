@@ -73,19 +73,9 @@ function HomePage() {
     
     return (
   <Grid container>
-          
-         
-          
-          
-          <div className={classes.image}> <h1 style={{color:"white",textAlign:"center",fontSize:"6rem",marginTop:"8vh",fontFamily:"fantasy"}}> DO SOMETHING  <br/><span style={{color:"#B6AFAF"}}> GREAT</span>  </h1></div>;
-       
-          
-          
-         
-        </Grid>
-        
-        
-    )
+          <div className={classes.image}> <h1 style={{color:"white",textAlign:"center",fontSize:"6rem",marginTop:"16vh",fontFamily:"fantasy"}}> DO SOMETHING  <br/> <span style={{color:"#B6AFAF",fontSize:"8.6rem",textShadow:'2px 2px #090000'}}> GREAT</span>  </h1></div>; 
+        </Grid>    
+  )
 }
 
 export default HomePage

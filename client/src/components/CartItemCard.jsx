@@ -11,6 +11,15 @@ const useStyles = makeStyles({
   root: {
     minWidth: '98%',
   },
+  button:{
+    color:"black", 
+    border:"1px solid black",
+   
+    "&:hover": {
+      color:"white",
+      backgroundColor: "black"
+    },
+  }
 });
 
 function CartItemCard(props) {
@@ -27,14 +36,15 @@ function CartItemCard(props) {
       <CardContent direction="row">
         <Grid container direction="row" justify="space-between">
           <li>{props.title}</li>
-  <li >{'Rs'} {props.subtitle}</li>
+  <li >{'₹'} {props.subtitle}</li>
   
         </Grid>
       </CardContent>
       <CardActions>
         <Button
           variant="contained"
-          color="secondary"
+          className={classes.button}
+          color="white"
           size="small"
           onClick={() => removeItemHandler(props.id)}
         >

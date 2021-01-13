@@ -26,6 +26,15 @@ const useStyles = makeStyles({
         position: 'fixed',
         left: '43.5vw',
       },
+      button:{
+        color:"black", 
+        border:"1px solid black",
+        
+        "&:hover": {
+          color:"white",
+          backgroundColor: "black"
+        },
+      }
   });
 
 export default function Order() {
@@ -69,7 +78,7 @@ export default function Order() {
 return (
     <Grid container direction="column" className={classes.root}>
     <Grid item >
-    <AppBar position="static">
+    <AppBar position="static" style={{backgroundColor:"black"}}>
       <Toolbar>
           <Button  style={{color:'white'}} onClick={onclickbackhandler} ><ArrowBackOutlinedIcon  style={{color:'white', fontSize:'28px'}}/><h5>Back to Cart</h5></Button>
 
@@ -107,8 +116,9 @@ return (
       <CardActions>
         <Button
           variant="contained"
-          color="secondary"
-          size="small"
+          color="black"
+          size="medium"
+          className={classes.button}
           style={{position:'relative',left:'43vw'}}
           onClick={Placeorder} 
         >

@@ -18,6 +18,15 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  button:{
+    color:"black", 
+    border:"1px solid black",
+    margin:"30px",
+    "&:hover": {
+      color:"white",
+      backgroundColor: "black"
+    },
+  }
 }));
 
 export default function Addproducts() {
@@ -48,15 +57,15 @@ const onclickaddhandler = ()=>{
   
         <Grid container  className={classes.root}>
             <Grid item xs={12}>
-            <AppBar position="static">
+            <AppBar position="static" style={{backgroundColor:"black"}}>
         <Toolbar>
         <Button  style={{color:'white'}} onClick={onclickbackhandler} ><ArrowBackOutlinedIcon  style={{color:'white', fontSize:'28px'}}/><h5>Back to Gallery</h5></Button>
         </Toolbar>
       </AppBar>
             </Grid>
 
-      <Grid container justify="center">
-                    <Grid item   style={{fontSize:"25px",paddingBottom:"20px"}}>TITLE
+      <Grid container justify ="center">
+                    <Grid  xs={7} item   style={{fontSize:"25px",paddingBottom:"20px",marginTop:"20px"}}>TITLE
               <TextField
                 variant="outlined"
                 required
@@ -71,7 +80,7 @@ const onclickaddhandler = ()=>{
               />
             </Grid>
 
-                    <Grid item style={{fontSize:"25px",paddingBottom:"20px"}}>IMG SOURCE
+                    <Grid xs={7} item style={{fontSize:"25px",paddingBottom:"20px"}}>IMG SOURCE
               <TextField
                 variant="outlined"
                 required
@@ -86,7 +95,7 @@ const onclickaddhandler = ()=>{
               />
             </Grid>
                   
-            <Grid item style={{fontSize:"25px",paddingBottom:"20px"}}>PRICE
+            <Grid xs={7} item style={{fontSize:"25px",paddingBottom:"20px"}}>PRICE
               <TextField
                 variant="outlined"
                 required
@@ -101,7 +110,7 @@ const onclickaddhandler = ()=>{
                   }}
               />
             </Grid>
-            <Grid item  style={{fontSize:"25px",paddingBottom:"20px"}}>DESCRIPTION
+            <Grid xs={7} item  style={{fontSize:"25px",paddingBottom:"20px"}}>DESCRIPTION
               <TextField
                 variant="outlined"
                 required
@@ -116,8 +125,12 @@ const onclickaddhandler = ()=>{
                   }}
               />
             </Grid>
-            <Button onClick={onclickaddhandler}>Submit</Button>
             </Grid>
+            <Grid container justify="center">
+
+            <Button onClick={onclickaddhandler} className={classes.button}  >Submit</Button>
+            </Grid>
+            
             </Grid>
 
 

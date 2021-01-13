@@ -21,6 +21,7 @@ const useStyles = makeStyles({
       typographyStyles: {
         position: 'fixed',
         left: '43.5vw',
+        fontFamily:"Oswald",
       },
   });
 
@@ -37,7 +38,7 @@ export default function Thankyou() {
     return (
         <Grid container direction="column" className={classes.root}>
         <Grid item >
-    <AppBar position="static">
+    <AppBar position="static" style={{backgroundColor:"black"}}>
       <Toolbar>
           <Button  style={{color:'white'}} onClick={onclickbackhandler} ><ArrowBackOutlinedIcon  style={{color:'white', fontSize:'28px'}}/><h5>Back to Gallary</h5></Button>
 

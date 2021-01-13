@@ -83,9 +83,9 @@ history.push("/addproducts")
   {
     (userstore.user==="admin") &&  <Button onClick={OnclickAddhandler} className={classes.button2} >Add products</Button>
   }
- 
+ <Button onClick={Onclicknamehandler} className={classes.button2} disabled={!userstore.user }>{userstore.user}</Button>
         <Button onClick={onclickgalleryhandler} color="inherit" className={classes.button}>Gallery</Button>
-  <Button onClick={Onclicknamehandler} className={classes.button2} disabled={!userstore.user }>{userstore.user}</Button>
+  
         <IconButton onClick={onclickloginhandler} className={classes.button2}  ><PersonIcon/></IconButton>
         <IconButton onClick={onclickcarthandler} className={classes.button2}>
         <ShoppingCartIcon /></IconButton>

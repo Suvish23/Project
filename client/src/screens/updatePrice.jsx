@@ -7,8 +7,24 @@ import Toolbar from '@material-ui/core/Toolbar';
 import ArrowBackOutlinedIcon from '@material-ui/icons/ArrowBackOutlined';
 import { UpdateContext } from '../UpdatePriceContext';
 import { useHistory } from 'react-router-dom';
+import { makeStyles } from '@material-ui/styles';
+
+
+const useStyles = makeStyles(()=>({
+    button:{
+        color:"black", 
+        border:"1px solid black",
+        marginBottom:"30px",
+        "&:hover": {
+          color:"white",
+          backgroundColor: "black"
+        },
+      }
+}))
+
 
 function UpdatePrice() {
+    const classes=useStyles();
     const {updatestore} = useContext(UpdateContext);
     const history = useHistory();
     console.log(updatestore.id)
@@ -30,7 +46,7 @@ function UpdatePrice() {
     return (
         <Grid container>
        <Grid item xs={12}>
-            <AppBar position="static">
+            <AppBar position="static" style={{backgroundColor:"black"}}>
         <Toolbar>
         <Button  style={{color:'white'}} onClick={onclickbackhandler} ><ArrowBackOutlinedIcon  style={{color:'white', fontSize:'28px'}}/><h5>Back to Gallery</h5></Button>
         </Toolbar>
@@ -38,7 +54,7 @@ function UpdatePrice() {
             </Grid>
 
             <Grid container justify="center">
-        <Grid container  xs={12}  style={{fontSize:"25px",paddingBottom:"20px"}}>Price
+        <Grid container  xs={7}  style={{fontSize:"25px",paddingBottom:"20px"}}>Price
         <TextField
           variant="outlined"
           required
@@ -53,8 +69,8 @@ function UpdatePrice() {
         />
       </Grid>
       </Grid>
-      <Grid>
-      <Button onClick={()=>onclicksubmit(updatestore.id)}>
+      <Grid container justify="center">
+      <Button onClick={()=>onclicksubmit(updatestore.id)} className={classes.button}>
           Submit
       </Button>
       </Grid>

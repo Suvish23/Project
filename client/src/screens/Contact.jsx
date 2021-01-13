@@ -81,7 +81,7 @@ const Submit = (e)=> {
       <Grid container xs={12} style={{marginTop:"45px"}} justify="center" >
           <Grid>
           <h1 style={{paddingLeft:"2px",paddingBottom:"20px" , fontSize:"38px"}}>
-          <span  style={{color:"#EB984E"}} > CONTACT </span> US   </h1>        
+          <span  style={{color:"#ffffff"}} > CONTACT </span> US   </h1>        
                     
                   <Grid container justify="center">
                     <Grid item xs={12}  style={{fontSize:"25px",paddingBottom:"20px"}}>NAME

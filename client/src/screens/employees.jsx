@@ -107,7 +107,7 @@ const history =useHistory();
      
 
       {
-    (userstore.user==="admin") &&  <Button onClick={onclickaddeletehandler}>Add/Delete Employee</Button>
+    (userstore.user==="admin") &&  <Button onClick={onclickaddeletehandler} style={{margin:"20px",backgroundColor:"black",color:"white"}}>Add/Delete Employee</Button>
   }
    <Grid container xs={12} direction="row" justify="center" alignContent="flex-end" style={{bottom:"0px",position:"absolute"}}>
      <Footer/>
