@@ -29,15 +29,18 @@ function UpdatePrice() {
     const history = useHistory();
     console.log(updatestore.id)
     const [price,setPrice] = useState('');
+
     const onclicksubmit = (id) =>{
         console.log(id)
      axios.put(`http://localhost:5000/update/${id}`,{
-     subtitle:price})   
+     subtitle:price}
+     )   
     .then((response) => {
         console.log(response.data)
     })
     .catch((error) => {
-        window.alert("Incorrect Details");
+      console.log(error)
+        // window.alert("Incorrect Details");
       });
     }
     const onclickbackhandler = () =>{

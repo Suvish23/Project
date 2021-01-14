@@ -59,7 +59,8 @@ app.put('/update/:id',async(req,res)=>{
         console.log(results.rows[0]);
     } 
     catch (error) {
-        res.status(500).json({status:"failed"});
+        console.log(error)
+        res.status(404).json({status:"failed"});
     }
 })
 
@@ -170,6 +171,15 @@ app.post("/orders",async(req,res)=> {
     app.post('/remove',async(req,res)=>{
         try {
             const results=await db.query("DELETE from employee where emp_name=$1 ",[req.body.name]);
+            res.status(200).json({ status: 'success',data :results.rows});
+        } 
+        catch (error) {
+            res.status(500).json({status:"failed"});
+        }
+    })
+    app.get('/trigger',async(req,res)=>{
+        try {
+            const results=await db.query("Select * from updateprice");
             res.status(200).json({ status: 'success',data :results.rows});
         } 
         catch (error) {

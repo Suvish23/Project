@@ -23,6 +23,9 @@ const Footer = () => {
   const onclickemployeehandler = () => {
     history.push('/employees')
   }
+  const onclicktriggerushandler = () => {
+    history.push('/triggers')
+  }
   return (
     <Grid
       container
@@ -35,7 +38,7 @@ const Footer = () => {
      
       <Button style={{color:'white'}} onClick={onclickemployeehandler}>Employee</Button>
       <Button style={{color:'white'}} onClick={onclickcontactushandler}>Contact Us</Button>
-      <Button style={{color:'white'}} >About us</Button>
+      <Button style={{color:'white'}} onClick={onclicktriggerushandler} >Trigger</Button>
         
       
     </Grid>

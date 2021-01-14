@@ -2,7 +2,7 @@ import { Card,CardContent, Grid,Typography, makeStyles, Button, TextField } from
 import Header from '../components/Header.jsx'
 import React, {useState,useContext} from 'react'
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import LocalPhoneIcon from '@material-ui/icons/LocalPhone';
+import CallIcon from '@material-ui/icons/Call';
 import EmailIcon from '@material-ui/icons/Email';
 import Footer from '../components/Footer.jsx';
 import { UserContext } from '../userContext';
@@ -11,11 +11,8 @@ import axios from 'axios';
 
 const useStyles = makeStyles(() => ({
   icon: {
-    width:"10vw",
-    height:"10vh",
-    paddingLeft:"9.8vw",
-    color:"black",
-    marginLeft:"8px"
+  marginLeft:"14vw",
+  fontSize:"40px"
   },
   root: {
     minWidth:"32vw",
@@ -83,8 +80,10 @@ const Submit = (e)=> {
       </Grid>
       <Grid container xs={12} style={{marginTop:"45px"}} justify="center" >
           <Grid>
-          <h1 style={{paddingLeft:"2px",paddingBottom:"20px" , fontSize:"38px"}}>
-          <span  style={{color:"black"}} > CONTACT </span> US   </h1>        
+          <Typography component="h1" variant="h5" style={{fontSize:"5rem",color:"#000000",fontFamily:"sans-serif",padding:"0"}}>
+          <p style={{borderRadius:'10px',marginBottom:"20px"}}>CONTACT
+          <span style={{color:"#ffffff",backgroundColor:'#000000',marginLeft:"20px"}}>US  </span>   </p> 
+          </Typography>       
                     
                   <Grid container justify="center">
                     <Grid item xs={12}  style={{fontSize:"25px",paddingBottom:"20px"}}>NAME
@@ -150,8 +149,8 @@ const Submit = (e)=> {
           </Grid>
                     <Grid  container>
             <Grid xs={4}>
-                <Card className={classes.root} style={{backgroundColor:"#EAEDED",paddingBottom:"1vh"}}>
-                <CardContent>
+                <Card className={classes.root} style={{backgroundColor:"#EAEDED",paddingBottom:"2vh"}}>
+                <CardContent justify='center'>
                   <LocationOnIcon className={classes.icon}></LocationOnIcon>
                   <Typography className={classes.title} gutterBottom>
                     Location
@@ -167,7 +166,7 @@ const Submit = (e)=> {
             <Grid xs={4}>
                 <Card className={classes.root} style={{backgroundColor:"#EB984E",paddingBottom:"4vh"}}>
                 <CardContent>
-                  <LocalPhoneIcon  className={classes.icon}></LocalPhoneIcon>
+                  <CallIcon  className={classes.icon}></CallIcon>
                   <Typography className={classes.title}  gutterBottom>
          Phone Number
         </Typography>
